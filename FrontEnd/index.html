@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/login.js"></script> 
+  
+  <title>CS490</title>
+  </head>
+  
+<body>
+
+
+	
+  <div class="login-form" id="login">
+	  <form class="formfields">
+        <input autocomplete="off" type="text" id="Username" placeholder="username"/>
+	      <input autocomplete="off" type="password" id="Password" placeholder="password"/>
+	      <button onclick="startPost();" type="button" id="login-button">Login</button>
+
+        <fieldset>
+            <div class="radio-select">
+            <input type="radio" id="amStudent" name="userType" checked="checked">
+            <label for="amStudent">I am a student</label>
+           
+      
+            <input type="radio" id="amTeacher" name="userType">
+            <label for="amTeacher">I am a teacher</label>
+            </div>  
+        </fieldset>
+
+ 		    <div class="state" id="login-message"><br> <p><div class= "sub-message" id="reply1"> </div>
+        <!-- <br> <div class= "sub-message" id="reply2"></div> </p> </div>  -->
+  	</form>
+
+    </div>
+  </div>
+
+</body>
+</html>

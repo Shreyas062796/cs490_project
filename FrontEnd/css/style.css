@@ -1,0 +1,175 @@
+html, body {
+  height:100%;
+  background-color: #6cc0e5
+  /*background-color: #FFFFFF*/
+}
+
+.login-form {
+  width: 360px;
+  padding: 4% 0 0;
+  margin: auto;
+}
+
+.status {
+  position: relative;
+  /*z-index: 1;*/
+  background: #FFFFFF;
+  max-width: 260px;
+  /*margin: 0 auto 100px;*/
+  /*padding: 5px;*/
+  text-align: center;
+  box-shadow: 1px 5px 5px #888888;
+  padding: 2% 0 0;
+  margin: auto;
+}
+
+.status update-status{
+  font-size: 16px
+  font-family: verdana;
+  text-align:top;
+  outline:0;
+  border:1;
+  /*box-sizing: border-box;*/
+}
+
+
+.login-reply p{
+  color: #3a4e56;
+  width: 360px;
+  padding: -50% 0 0;
+  margin: auto;
+}
+
+.sub-message{
+  text-align: left;
+  color: red;
+  /*width: 360px;*/
+  padding: -50% 0 0;
+  margin: auto;
+}
+
+
+
+.state{
+  font-size: 16px;
+  font-family: verdana;
+  text-align: top;
+  margin-top: -20px;
+  height: 40px;
+}
+
+.reply-zone{
+  font-family: verdana
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  /*margin: 0 auto 100px;*/
+  padding: 45px;
+  text-align: center;
+  box-shadow: 1px 5px 5px #888888;
+  padding-bottom: 80px;
+}
+
+form {
+  font-family: verdana
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 1px 5px 5px #888888;
+  padding-bottom: 50px;
+}
+
+form input{
+  font-family: verdana;
+  outline:0;
+  border:1;
+  background: #f2f2f2;
+  padding: 15px;
+  box-sizing: border-box;
+  
+}
+
+form input{
+  font-size: 20px;
+  font-family: verdana;
+  outline: 0;
+  background: #55555;
+  width: 100%;
+  border: 0;
+  margin: 0 0 10px;
+  padding: 18px;
+  box-sizing: border-box;
+}
+
+form button{
+  font-family: verdana;
+  font-size: 16px;
+  color: #ceeefb;
+  background:#2895C4;
+/*   background: #2890bc; */
+/*   text-align:left; */
+  width:100%;
+  outline:0;
+  border:0;
+  padding:15px;
+/*   text-transform: uppercase; */
+  border-radius: .15rem;
+
+}
+
+form button:hover, form button:active, form button:focus{
+  background: #055E85; 
+}
+
+/*this is for the form field and dealing with the radio buttons*/
+fieldset{
+  overflow: hidden;
+  outline: 0;
+  border: 0;
+  font-size: 12px;
+}
+
+
+.radio-select{
+  font-size: 12px;
+  font-family: verdana;
+  vertical-align: left;
+  text-align: left;
+  display: inline-block;
+  /*float: left;*/
+  clear: none;
+
+}
+
+label {
+  float: left;
+  clear: none;
+  display: block;
+  padding: 2px 1em 0 0;
+}
+
+
+input[type=radio],
+input.radio {
+  float: left;
+  clear: none;
+  margin: 2px 0 0 2px;
+  width: auto;
+}
+
+.container {
+  position: absolute;
+  width: 24em;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  animation: intro .7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+
+
