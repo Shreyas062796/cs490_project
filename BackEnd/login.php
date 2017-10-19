@@ -1,11 +1,10 @@
-B<?php
+<?php
 //This is the backend that connects to the database and test when the login has 1;95;0cpassed or failed
 $username = $_POST['username'];
 $password = $_POST['password'];
 $check = $_POST['type'];
 
-$connection = mysqli_connect("sql2.njit.edu", "sr594", "//Password", "sr594");
-
+$connection = mysqli_connect("sql2.njit.edu", "sr594", "Baseball123", "sr594");
 if (!$connection){
 die("Connection failed: " . mysqli_connect_error());
 }
