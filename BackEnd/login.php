@@ -31,6 +31,10 @@ $Studentlogin = "Failed";
 }
 }
 }
+else
+{
+$Studentlogin = "Failed";
+}
 echo $Studentlogin;
 }
 if($check == "teacher")
@@ -56,7 +60,7 @@ $login = "Failed";
 }
 }
 else{
-$login = "The username doesn't exist";
+$login = "Failed";
 }
 echo $login;
 }
