@@ -4,20 +4,16 @@ if (!$connection){
 die("Connection failed: " . mysqli_connect_error());
 }
 
-
-$TakenQuizzes = "Select * from TakenQuizzes;";
-$AllQuizzes = mysqli_query($connection, $TakenQuizzes);
+$Quizzes  = "Select * from Quizzes;";
+$QuizQuest = mysqli_query($connection, $Quizzes);
 $arr = array();
 
-
-while($y = mysqli_fetch_object($AllQuizzes))
+while($ob = mysqli_fetch_object($QuizQuest))
 {
-   	array_push($arr,$y);
+array_push($arr,$ob);
 }
 
-$q = json_encode($arr);
-
-echo $q; 
+$jsonQuiz = json_encode($arr);
+echo $jsonQuiz;
 mysqli_close($connection);
-
 ?>

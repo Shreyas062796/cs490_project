@@ -64,6 +64,11 @@ $Grade3 = "INSERT INTO StudentGrades (StudentUsername, Quiz, Grade) VALUES ('fas
 $Grade4 = "INSERT INTO StudentGrades (StudentUsername, Quiz, Grade) VALUES ('username',1234,84);";
 $Grade5 = "INSERT INTO StudentGrades (StudentUsername, Quiz, Grade) VALUES ('sr594',4351,67);";
 
+$Taken1 = "INSERT INTO TakenQuizzes (username,quiz_id,question_id,StudentAnswer) VALUES ('sr594',1234,1,'def add(a,x): return(a+b)');";
+$Taken2 = "INSERT INTO TakenQuizzes (username,quiz_id,question_id,StudentAnswer) VALUES ('sr594',1234,2,'def subtract(a,b): return(a-b)');";
+$Taken3 = "INSERT INTO TakenQuizzes (username,quiz_id,question_id,StudentAnswer) VALUES ('sr594',1234,3,'def Square(a): return(a**2)');";
+
+
 mysqli_query($connection,"Truncate table StudentGrades;");
 mysqli_query($connection,"Truncate table Quizzes;");
 mysqli_query($connection,"Truncate table QuizQuestions;");
@@ -78,5 +83,8 @@ mysqli_query($connection,$Grade2);
 mysqli_query($connection,$Grade3);
 mysqli_query($connection,$Grade4);
 mysqli_query($connection,$Grade5);
+mysqli_query($connection,$Taken1);
+mysqli_query($connection,$Taken2);
+mysqli_query($connection,$Taken3);
 mysqli_close($connection);
 ?>
