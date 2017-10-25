@@ -11,7 +11,10 @@ die("Connection failed: " . mysqli_connect_error());
 
 $GradesInsert = "INSERT INTO StudentGrades (StudentUsername, Quiz, Grade) VALUES ('$studentName',$QuizName,$QuizScore);";
 
+
+$updateTakenQuizzes = "UPDATE TakenQuizzes set Graded = 1 where username = '$studentName' and quiz_id = $QuizName;";
 mysqli_query($connection,$GradesInsert);
+mysqli_query($connection,$updateTakenQuizzes);
 mysqli_close($connection);
 
 
