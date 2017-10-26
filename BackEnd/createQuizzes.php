@@ -16,7 +16,7 @@ if($x == 0)
 {
 $EnterQuizzes = "INSERT INTO Quizzes (quiz_id, questions, quiz_name) VALUES ($QuizId,'$Questions', '$QuizName');";
 mysqli_query($connection,$EnterQuizzes);
-echo $QuizId;
+echo "Ok";
 }
 
 

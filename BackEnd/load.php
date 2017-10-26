@@ -62,15 +62,15 @@ $Grade1 = "INSERT INTO StudentGrades (StudentUsername, Quiz, Grade) VALUES ('obc
 $Grade2 = "INSERT INTO StudentGrades (StudentUsername, Quiz, Grade) VALUES ('sr594',1234,83);";
 $Grade3 = "INSERT INTO StudentGrades (StudentUsername, Quiz, Grade) VALUES ('faster',1234,76);";
 $Grade4 = "INSERT INTO StudentGrades (StudentUsername, Quiz, Grade) VALUES ('username',1234,84);";
-$Grade5 = "INSERT INTO StudentGrades (StudentUsername, Quiz, Grade) VALUES ('sr594',4351,67);";
+//$Grade5 = "INSERT INTO StudentGrades (StudentUsername, Quiz, Grade) VALUES ('sr594',4351,67);";
 
-$Taken1 = "INSERT INTO TakenQuizzes (username,quiz_id,question_id,StudentAnswer,Graded) VALUES ('sr594',1234,1,'def add(a,x): return(a+b)',0);";
-$Taken2 = "INSERT INTO TakenQuizzes (username,quiz_id,question_id,StudentAnswer,Graded) VALUES ('sr594',1234,2,'def subtract(a,b): return(a-b)',0);";
-$Taken3 = "INSERT INTO TakenQuizzes (username,quiz_id,question_id,StudentAnswer,Graded) VALUES ('sr594',1234,3,'def Square(a): return(a**2)',0);";
+//$Taken1 = "INSERT INTO TakenQuizzes (username,quiz_id,question_id,StudentAnswer,Graded) VALUES ('sr594',1234,1,'def add(a,x): return(a+b)',0);";
+//$Taken2 = "INSERT INTO TakenQuizzes (username,quiz_id,question_id,StudentAnswer,Graded) VALUES ('sr594',1234,2,'def subtract(a,b):\n return(a-b)',0);";
+//$Taken3 = "INSERT INTO TakenQuizzes (username,quiz_id,question_id,StudentAnswer,Graded) VALUES ('sr594',1234,3,'def Square(a): return(a**2)',0);";
 
-$Taken4 = "INSERT INTO TakenQuizzes (username,quiz_id,question_id,StudentAnswer,Graded) VALUES ('sr594',4351,1,'def add(a,x): return(a+b)',0);";
-$Taken5 = "INSERT INTO TakenQuizzes (username,quiz_id,question_id,StudentAnswer,Graded) VALUES ('sr594',4351,2,'def subtract(a,b): return(a-b)',0);";
-$Taken6 = "INSERT INTO TakenQuizzes (username,quiz_id,question_id,StudentAnswer,Graded) VALUES ('sr594',4351,3,'def Square(a): return(a**2)',0);";
+//$Taken4 = "INSERT INTO TakenQuizzes (username,quiz_id,question_id,StudentAnswer,Graded) VALUES ('sr594',4351,1,'def add(a,x): return(a+b)',0);";
+//$Taken5 = "INSERT INTO TakenQuizzes (username,quiz_id,question_id,StudentAnswer,Graded) VALUES ('sr594',4351,2,'def subtract(a,b): return(a-b)',0);";
+//$Taken6 = "INSERT INTO TakenQuizzes (username,quiz_id,question_id,StudentAnswer,Graded) VALUES ('sr594',4351,3,'def Square(a): return(a**2)',0);";
 
 mysqli_query($connection,"Truncate table StudentGrades;");
 mysqli_query($connection,"Truncate table Quizzes;");
@@ -86,12 +86,12 @@ mysqli_query($connection,$Grade1);
 mysqli_query($connection,$Grade2);
 mysqli_query($connection,$Grade3);
 mysqli_query($connection,$Grade4);
-mysqli_query($connection,$Grade5);
-mysqli_query($connection,$Taken1);
-mysqli_query($connection,$Taken2);
-mysqli_query($connection,$Taken3);
-mysqli_query($connection,$Taken4);
-mysqli_query($connection,$Taken5);
-mysqli_query($connection,$Taken6);
+//mysqli_query($connection,$Grade5);
+//mysqli_query($connection,$Taken1);
+//mysqli_query($connection,$Taken2);
+//mysqli_query($connection,$Taken3);
+//mysqli_query($connection,$Taken4);
+//mysqli_query($connection,$Taken5);
+//mysqli_query($connection,$Taken6);
 mysqli_close($connection);
 ?>

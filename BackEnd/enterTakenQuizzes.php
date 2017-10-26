@@ -10,6 +10,7 @@ if (!$connection){
 die("Connection failed: " . mysqli_connect_error());
 }
 
+echo $Answer;
 $TakenQuizzes = "INSERT INTO TakenQuizzes (username,quiz_id,question_id,StudentAnswer,Graded) VALUES ('$StudentName',$QuizId,$QuestionId,'$Answer',0);";
 mysqli_query($connection, $TakenQuizzes);
 
