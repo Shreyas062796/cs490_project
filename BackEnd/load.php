@@ -12,7 +12,7 @@ die("Connection failed: " . mysqli_connect_error());
 
 $StudentLogin = "CREATE TABLE StudentLogin (username VARCHAR(100), password VARCHAR(400))";
 $TeacherLogin = "CREATE TABLE TeacherLogin (username VARCHAR(100), password VARCHAR(400))";
-$createQuestion = "CREATE TABLE QuizQuestions (QuestionId INTEGER, Question TEXT,FuncName VARCHAR(100), tc1 VARCHAR(30), type1 VARCHAR(30),tca1 VARCHAR(30),tc2 VARCHAR(30), type2 VARCHAR(30),tca2 VARCHAR(30), tc3 VARCHAR(30), type3 VARCHAR(30),tca3 VARCHAR(30))";
+$createQuestion = "CREATE TABLE QuizQuestions (QuestionId INTEGER primary key auto_increment, Question TEXT,FuncName VARCHAR(100), tc1 VARCHAR(30), type1 VARCHAR(30),tca1 VARCHAR(30),tc2 VARCHAR(30), type2 VARCHAR(30),tca2 VARCHAR(30), tc3 VARCHAR(30), type3 VARCHAR(30),tca3 VARCHAR(30))";
 $Grades = "CREATE TABLE StudentGrades (StudentUsername VARCHAR(200), Quiz INTEGER, Grade INTEGER)";
 $Quizzes = "CREATE TABLE Quizzes (quiz_id INTEGER,questions VARCHAR(200), quiz_name VARCHAR(200))";
 $TakenQuizzes = "CREATE TABLE TakenQuizzes (username VARCHAR(100),quiz_id INTEGER,question_id INTEGER,StudentAnswer TEXT,Graded INTEGER)";
@@ -52,10 +52,10 @@ else
 echo "Error: " . mysqli_error($connection). "<br>";
 }
 }
-$Q1 = "INSERT INTO QuizQuestions (QuestionId,Question,FuncName,tc1,type1,tca1,tc2,type2,tca2,tc3,type3,tca3) VALUES (1,'Write a function add that takes two parameters a and b and returns the addition of the numbers?','add','1 2','int','3','5 6','int','11','1 6','int','7');";
-$Q2 = "INSERT INTO QuizQuestions (QuestionId,Question,FuncName,tc1,type1,tca1,tc2,type2,tca2,tc3,type3,tca3) VALUES (2,'Write a function subtract that takes two parameters a and b and returns the subtraction of the numbers?','subtract','1 2','int','-1','10 6','int','4','9 6','int','3');";
-$Q3 = "INSERT INTO QuizQuestions (QuestionId,Question,FuncName,tc1,type1,tca1,tc2,type2,tca2,tc3,type3,tca3) VALUES (3,'Write a function Square that takes one parameter a and returns the square of that number?','Square','1','int','1','3','int','9','2','int','4');";
-$Q4 = "INSERT INTO QuizQuestions (QuestionId,Question,FuncName,tc1,type1,tca1,tc2,type2,tca2,tc3,type3,tca3) VALUES (4,'Write a function isEven that takes one parameter a and returns true?','isEven','2','int','true','3','int','false','6','int','true');";
+$Q1 = "INSERT INTO QuizQuestions (Question,FuncName,tc1,type1,tca1,tc2,type2,tca2,tc3,type3,tca3) VALUES ('Write a function add that takes two parameters a and b and returns the addition of the numbers?','add','1 2','int','3','5 6','int','11','1 6','int','7');";
+$Q2 = "INSERT INTO QuizQuestions (Question,FuncName,tc1,type1,tca1,tc2,type2,tca2,tc3,type3,tca3) VALUES ('Write a function subtract that takes two parameters a and b and returns the subtraction of the numbers?','subtract','1 2','int','-1','10 6','int','4','9 6','int','3');";
+$Q3 = "INSERT INTO QuizQuestions (Question,FuncName,tc1,type1,tca1,tc2,type2,tca2,tc3,type3,tca3) VALUES ('Write a function Square that takes one parameter a and returns the square of that number?','Square','1','int','1','3','int','9','2','int','4');";
+$Q4 = "INSERT INTO QuizQuestions (Question,FuncName,tc1,type1,tca1,tc2,type2,tca2,tc3,type3,tca3) VALUES ('Write a function isEven that takes one parameter a and returns true?','isEven','2','int','true','3','int','false','6','int','true');";
 $Quiz1 = "INSERT INTO Quizzes (quiz_id,questions,quiz_name) VALUES (1234,'1 2 3','Quiz1');";
 $Quiz2 = "INSERT INTO Quizzes (quiz_id,questions,quiz_name) VALUES (4351,'2 3 4','Quiz2');";
 $Grade1 = "INSERT INTO StudentGrades (StudentUsername, Quiz, Grade) VALUES ('obc2',1234,72);";
