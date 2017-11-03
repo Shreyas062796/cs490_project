@@ -1,0 +1,171 @@
+.examQ *{
+	/*display: flex;*/
+	vertical-align: middle;
+
+}
+
+.quizCreator{
+	/*padding: 20px ;*/
+    margin-right: 12px;
+    margin-left: 12px;
+}
+
+
+textarea{
+	margin-left: 12px;
+	margin-bottom: 5px;
+}
+
+
+fieldset {
+    display: block;
+    -webkit-margin-start: 2px;
+    -webkit-margin-end: 2px;
+    -webkit-padding-before: 0.35em;
+    -webkit-padding-start: 0.75em;
+    -webkit-padding-end: 0.75em;
+    -webkit-padding-after: 0.625em;
+    min-width: -webkit-min-content;
+    border-width: 2px;
+    border-style: hidden;
+    border-color: threedface;
+    border-image: initial;
+    width: 150%;
+}
+input[type="button" i], input[type="submit" i], input[type="reset" i], input[type="file" i]::-webkit-file-upload-button, button {
+    align-items: flex-start;
+    text-align: center;
+    cursor: default;
+    color: buttontext;
+    background-color: buttonface;
+    box-sizing: border-box;
+    padding: 2px 6px 3px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: buttonface;
+    border-image: initial;
+}
+
+ button {
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    margin: 0em;
+    font: 13.3333px Arial;
+}
+
+input, textarea, select, button, meter, progress {
+    -webkit-writing-mode: horizontal-tb;
+}
+button {
+    -webkit-appearance: button;
+}
+
+
+element.style {
+}
+
+button {
+    -webkit-appearance: button;
+    /*padding: 1px 1px 1px 1px;*/
+}
+
+input, textarea, select, button, meter, progress {
+    -webkit-writing-mode: horizontal-tb;
+}
+
+input, textarea, select, button {
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    margin: 0em;
+    font: 13.3333px Arial;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+/*this now is for the inserting of data*/
+.quizname-input{
+    font-family: Roboto;
+}
+
+.quizname{
+    border:2px solid #456879;
+    border-radius:10px;
+    height: 22px;
+    width: 230px;
+}
+
+button{
+  font-family: roboto;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #ceeefb;
+  background:#1b1e24;
+/*   background: #2890bc; */
+/*   text-align:left; */
+  width:30%;
+  outline:0;
+  border:0;
+  padding:15px;
+/*   text-transform: uppercase; */
+  border-radius: .15rem;
+
+}
+
+button:hover, form button:active, form button:focus{
+  background: #055E85; 
+}
+
+button{
+-webkit-border-radius: 50px;
+-moz-border-radius: 50px;
+border-radius: 50px;
+}
+
+.makeQ{
+    width: 100%
+}
+
+p{
+    font-size: 18px;
+}
+
+
+
+input, select{
+    font-family: Roboto;
+    font-size: 14;
+    border: 1px solid #222;
+    background: transparent;;
+    margin-left: 10px;
+/*  margin-right: 5px; */
+}
+
+input[type=text]{
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #000000;
+    padding: 2px 5px;
+}
+
+
+#workarea-notice{
+    margin-top: 18px;    
+}

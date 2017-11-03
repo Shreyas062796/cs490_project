@@ -1,174 +1,76 @@
-/* vanilla js is allowed here... yeah work with it */
+/*
+Going out in post form
+username -> the persons username
+password -> the persons password
+type -> whether it is a student or an instructor     (REMOVE AT A LATER POINT)
 
-// document.getElementById("login-button").addEventListener("onclick", function(){
-//   console.log("asadasan");
-// 	// document.getElementById("status").textContent='Login status is';
-// 	// document.getElementById("#login-message").innerHTML = "<br> <p>Login status</p>";
-// 	var cred = getCredentials();
-// });
-// var xhr = new XMLHttpRequest();
-
-
-// function getCredentials(){
-//   const user = {
-//     username: document.querySelector("#username").value
-//   };
-  
-//   console.log(user.username);
-//   return user;
-// };
-
-// ignore this for now this was just a test function.
-// function welcome(){
-// 	var username = document.getElementById("Username").value;
-// 	var password = document.getElementById("Password").value;
-// 	console.log(username);
-// 	console.log(password);
-
-// 	document.getElementById("Username").value="";
-// 	document.getElementById("Password").value=""	;
-
-// 	document.getElementById("login-message").innerHTML="<br> <p>Awaiting to log in</p>";
-// }
+NOTE: The 'call' post value for (the backend) is being generated in the login.php file
+// this is exclusive to the login page
+*/
 
 
+//=============================================================
+//	GLOBALS
+
+var myback = 'login.php';  // this is exclusivly for the login page
+var mainpage = 'user.php'; // this is the page that redirects to the specific user
+var sess_check = 'session.php'; // variable that checks if a session has been created
+
+//=============================================================
+
+// checks the type the user has chose for it to be checked againts the DB
 function checkType(){
 	if(document.getElementById("amTeacher").checked){
 		return "teacher";
 	}else return "student";
 }
 
-
+// what happens when you click the login button
 function startPost(){
-
-	//reset it 
+	//reset the reply so you get a blank area to update
 	document.getElementById("reply1").innerHTML = '';
-	// document.getElementById("reply2").innerHTML = '';
-
-	var httpR = new XMLHttpRequest();
-
-	var form = 'index.php';
-
+	// getters
 	var username = document.getElementById("Username").value;
 	var password = document.getElementById("Password").value;
-	var type = checkType();
+	// var type = checkType();
 
-	// console.log(type);
+	// generate the POST reply
+	var reply = "username="+username+"&password="+password+"&type=0"+"&cmd=login";
 
-	// console.log(username+":"+password);
-
-	// var reply = "username="+username+"&password="+password+"&type="+type+"&cmd=login";
-	var reply = "username="+username+"&password="+password+"&type="+type+"&cmd=login";
-
-	httpR.open("POST", form, true);
-	httpR.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-	
-	httpR.onreadystatechange = function() {
-    	// console.log(httpR);
-
-	    if(httpR.readyState == 4 && httpR.status == 200) {
-	        var return_data = httpR.responseText;
-	        console.log(httpR.responseText);
-	        var reply = httpR.responseText.substring(0, return_data.length-2)
-	        console.log(reply);
-	        // console.log(reply+":"+"successful");
+	// function to execute on post request
+	var todo = function(){
+		//if there is a reply
+		if(this.readyState==4 && this.status==200){
+			dPrint(this.responseText);
+			var return_data = this.responseText;
+	        // var reply = this.responseText.substring(0, return_data.length-3)
+	        var reply = return_data.trim();
 
 	        if (reply.toLowerCase() == "successful"){
 	        	// code that loads to the session.php and loads the main page
-	        	document.getElementById("reply1").innerHTML = "You're in";
 	        	window.location.href="user.php";
-
 	        }
 	        else if (reply.toLowerCase() == "failed") {
 	        	document.getElementById("reply1").innerHTML = "Incorrect username password combination"
-	        }else{
+	        }else if(username=="" || password==""){
 	        	// this should not be shown, that means the backend isnt properly handling it
 	        	document.getElementById("reply1").innerHTML = "One or more fields are missing parameters"
+	        }else{
+				document.getElementById("reply1").innerHTML = "Username Password combo does not exist";	        	
 	        }
-
-
-
-
-
-	        // document.getElementById("login-message").innerHTML = return_data;
-
-	        //new code
-
-	        // var unpacked = return_data;
-	  //       var json_array = return_data.split("-");
-
-
-	        
-			
-			
-
-			// // console.log(unpacked);
-			// // console.log(d_json);
-			
-			// var back = JSON.parse(json_array[0]);
-			// var middle = JSON.parse(json_array[1])
-
-
-
-
-	  //       if(back['name'] == 'NJIT'){
-		 //        if(back['reply'] == '1'){
-			// 	    document.getElementById("reply2").innerHTML = 'Password for NJIT is correct';
-			// 	    document.getElementById("reply2").style.color = 'green';
-			// 	}else if (back['reply'] == '0') {
-			// 	    document.getElementById("reply2").innerHTML = 'Password for NJIT is incorrect';
-			// 	    document.getElementById("reply2").style.color = 'red';
-			// 	}	        
-			// }
-
-	  //       //end of new node
-	  //       if(middle['name'] == 'backend'){
-		 //        if(middle['reply'] == '1'){
-			// 	    document.getElementById("reply1").innerHTML = 'Password for DB is correct';
-			// 	    document.getElementById("reply1").style.color = 'green';
-			// 	}else if (middle['reply'] == '0') {
-			// 	    document.getElementById("reply1").innerHTML = 'Password for DB is incorrect';
-			// 	    document.getElementById("reply1").style.color = 'red';
-			// 	}	        
-			// }
-
-
-			// document.getElementById("reply2").innerHTML = 'Password for NJIT is wrong';
-		 //    document.getElementById("reply2").style.color = 'red';
-
-
-
-
-
-
-
-		    // console.log(unpacked);
-
-	    }
-	}
-
-	httpR.send(reply);
-	// document.getElementById("login-message").innerHTML="<br> <p> Trying </p>";
+		}
+	};
+	ajax(myback, "POST", todo, reply);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-// document.getElementById("login-button").addEventListener("onclick", function(){
-  
-
-// 	// document.getElementById("status").textContent='Login status is';
-// 	// document.getElementById("#login-message").innerHTML = "<br> <p>Login status</p>";
-	
-// });
+// on load checks if in the login page and if a session has started redirect to main page
+window.addEventListener('load', function(){
+	ajax(sess_check, "POST", function(){
+		// if a session has been created redirect to the main page
+		if(this.readyState == 4 && this.status == 200) {
+	    	if(this.responseText=="set"){
+    			window.location.href=mainpage;
+	    	}
+	    }
+	});
+})

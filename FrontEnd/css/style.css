@@ -1,6 +1,7 @@
 html, body {
   height:100%;
-  background-color: #6cc0e5
+  background-color: #3A3F48;
+  /*background-color: #6cc0e5*/
   /*background-color: #FFFFFF*/
 }
 
@@ -24,7 +25,7 @@ html, body {
 }
 
 .status update-status{
-  font-size: 16px
+  font-size: 16px;
   font-family: verdana;
   text-align:top;
   outline:0;
@@ -110,7 +111,8 @@ form button{
   font-family: verdana;
   font-size: 16px;
   color: #ceeefb;
-  background:#2895C4;
+  background: #3A3F48;
+  /*background:#585E6A;*/
 /*   background: #2890bc; */
 /*   text-align:left; */
   width:100%;
@@ -123,7 +125,11 @@ form button{
 }
 
 form button:hover, form button:active, form button:focus{
-  background: #055E85; 
+  background: #585E6A; 
+}
+
+form button:hover{
+  cursor: pointer;
 }
 
 /*this is for the form field and dealing with the radio buttons*/
@@ -171,5 +177,20 @@ input.radio {
   animation: intro .7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
+input{
+-webkit-border-radius: 50px;
+-moz-border-radius: 50px;
+border-radius: 50px;
+}
+form button{
+-webkit-border-radius: 50px;
+-moz-border-radius: 50px;
+border-radius: 50px;
+}
 
+form {
+-webkit-border-radius: 20px;
+-moz-border-radius: 20px;
+border-radius: 30px;
+}
 

@@ -1,19 +1,11 @@
 * {
   margin: 0;
   padding: 0;
-  background-color: #f7f7f7;
-}
+  
+} 
  
 nav {
   margin: 50px;
-}
-
-#nav{
-  text-align: center;
-}
-
-#nav ul{
-  display: inline-block;
 }
  
 ul {

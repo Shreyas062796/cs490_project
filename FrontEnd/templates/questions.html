@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+
+<html>
+<link rel=stylesheet href="css/questions.css">
+<link rel=stylesheet href="css/tables.css">
+<script src="js/questions.js"></script>
+
+<body class="quizCreator">
+	<div class="quizgen-title" id="quizgen-title">
+	<h2>Create your quiz</h2>
+	<p class="title"><b>
+	You can add questions from the question bank or can press the 'add question' button to add your own question. Once your done click the submit button and all of your students will be able to take the quiz.
+	</b></p>
+	<br>
+	</div>
+
+	<div>		
+		<div  style="width: 600px; float: left;" class="exam" id="exam">
+		<div class="quizname-input">
+		<label for="quizname" style="font-size: 20px">Choose a name for your quiz</label>
+		<input type="text" name="quizname" id="quizname">
+		</div>
+		<br>
+			<table border="2" id="theExam" class="table-fill">
+				<thead>
+				<tr>
+					<th>Q#</th>
+					<th>id</th>
+					<th>Question</th>
+				</tr>
+				</thead>
+				<tbody>
+				</tbody>
+
+			</table>
+			<br>
+			<div id="buttons">
+			<button onclick="addQuestionId();" type="button" class="addQuestionId" id="addQuestionId">Add Question by Id</button>
+
+			<button onclick="addAQuestion();" type="button" class="addQuestion" id="addQuestion">Add New Question</button>
+			<button onclick="createQuiz();" type="button" class="create-quiz" id='create-quiz'>Submit&amp;Create Quiz</button>
+			</div>
+			<div id="submit-notice"></div>
+		</div>
+
+		<div style="float: left; clear: both; margin-top: 10px; padding-top: 10px" id="workArea"><br>
+		</div>
+ 		<div style="margin-left:70%;" class="qBank" id="qBank">
+		<!-- <div style="width:100%; align:right;" class="qBank" id="qBank"> -->
+
+		</div>
+
+
+	</div>
+
+
+
+</body>
+
+
+
+	
+</html>

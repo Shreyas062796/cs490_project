@@ -25,7 +25,7 @@ window.onload = function generateQuiz(){
 
 	for(var i=0;i<questions.length;i++){
 
-		console.log(questions[i].question);
+		// console.log(questions[i].question);
 		// generate the question
 		div.innerHTML +=  "<br>" + "Q" + (i+1)+ "    " + questions[i].question + "<br>";
 		// auto generate ids for the textfields
