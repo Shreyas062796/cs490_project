@@ -53,9 +53,15 @@ else
 echo "Error: " . mysqli_error($connection). "<br>";
 }
 }
-$Quest1 = "INSERT INTO Questions (Question,FuncName,Difficulty,QuestionType,Testcases) VALUES ('Write a function printNum that takes 1 parameter a  and uses a for loop to print it out 5 times','printNum',1,'for loop','1-11111 4-44444 3-33333 6 66666');";
-$Quest2 = "INSERT INTO Questions (Question,FuncName,Difficulty,QuestionType,Testcases) VALUES ('Write a function iterate that takes 1 parameter a which is the equal to the counter that prints hi while the counter is less than 12 then it breaks. Increment the counter after everytime through the loop.','iterate',1,'while loop','10-hihi 9-hihihi 8-hihihihi');";
-$Quest3 = "INSERT INTO Questions (Question,FuncName,Difficulty,QuestionType,Testcases) VALUES ('Write a function HowOld that takes 1 parameter a  and uses if statements to say if a is less than than 18 then print child, otherwise print adult','HowOld',1,'if/else statement','1-child 18-adult 16-child 30-adult');";
+$Quest1 = "INSERT INTO Questions (Question,FuncName,Difficulty,QuestionType,Testcases) VALUES ('Write a function printNum that takes 1 parameter a  and uses a for loop to print it out 5 times','printNum',1,'for loop','1-11111;;4-44444;;3-33333;;6-66666');";
+$Quest2 = "INSERT INTO Questions (Question,FuncName,Difficulty,QuestionType,Testcases) VALUES ('Write a function iterate that takes 1 parameter a which is the equal to the counter that prints hi while the counter is less than 12 then it breaks. Increment the counter after everytime through the loop.','iterate',1,'while loop','10-hihi;;9-hihihi;;8-hihihihi');";
+$Quest3 = "INSERT INTO Questions (Question,FuncName,Difficulty,QuestionType,Testcases) VALUES ('Write a function HowOld that takes 1 parameter a  and uses if statements to say if a is less than than 18 then print child, otherwise print adult','HowOld',1,'if/else statement','1-child;;18-adult;;16-child;;30-adult');";
+$Quest4 = "INSERT INTO Questions (Question,FuncName,Difficulty,QuestionType,Testcases) VALUES ('Write a function printNum that takes 1 parameter a  and uses a for loop to print it out 5 times','printNum',
+1,'for loop','1-11111;;4-44444;;3-33333;;6-66666');";
+$Quest5 = "INSERT INTO Questions (Question,FuncName,Difficulty,QuestionType,Testcases) VALUES ('Write a function iterate that takes 1 parameter a which is the equal to the counter that prints hi while the
+ counter is less than 12 then it breaks. Increment the counter after everytime through the loop.','iterate',1,'while loop','10-hihi;;9-hihihi;;8-hihihihi');";
+$Quest6 = "INSERT INTO Questions (Question,FuncName,Difficulty,QuestionType,Testcases) VALUES ('Write a function HowOld that takes 1 parameter a  and uses if statements to say if a is less than than 18 th
+en print child, otherwise print adult','HowOld',1,'if/else statement','1-child;;18-adult;;16-child;;30-adult');";
 $Q1 = "INSERT INTO QuizQuestions (Question,FuncName,tc1,type1,tca1,tc2,type2,tca2,tc3,type3,tca3) VALUES ('Write a function add that takes two parameters a and b and returns the addition of the numbers?','add','1 2','int','3','5 6','int','11','1 6','int','7');";
 $Q2 = "INSERT INTO QuizQuestions (Question,FuncName,tc1,type1,tca1,tc2,type2,tca2,tc3,type3,tca3) VALUES ('Write a function subtract that takes two parameters a and b and returns the subtraction of the numbers?','subtract','1 2','int','-1','10 6','int','4','9 6','int','3');";
 $Q3 = "INSERT INTO QuizQuestions (Question,FuncName,tc1,type1,tca1,tc2,type2,tca2,tc3,type3,tca3) VALUES ('Write a function Square that takes one parameter a and returns the square of that number?','Square','1','int','1','3','int','9','2','int','4');";
@@ -78,7 +84,7 @@ $Grade3 = "INSERT INTO StudentGrades (StudentUsername, Quiz, Grade, QuestionGrad
 
 mysqli_query($connection,"Truncate table StudentGrades;");
 mysqli_query($connection,"Truncate table Quizzes;");
-mysqli_query($connection,"Truncate table QuizQuestions;");
+mysqli_query($connection,"Truncate table Questions;");
 mysqli_query($connection,"Truncate table TakenQuizzes;");
 mysqli_query($connection,$Q1);
 mysqli_query($connection,$Q2);
@@ -87,6 +93,9 @@ mysqli_query($connection,$Q4);
 mysqli_query($connection,$Quest1);
 mysqli_query($connection,$Quest2);
 mysqli_query($connection,$Quest3);
+mysqli_query($connection,$Quest4);
+mysqli_query($connection,$Quest5);
+mysqli_query($connection,$Quest6);
 mysqli_query($connection,$Quiz1);
 mysqli_query($connection,$Quiz2);
 mysqli_query($connection,$Grade1);
