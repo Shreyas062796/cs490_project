@@ -5,7 +5,7 @@ $x = $_POST['question_id'];
 if (!$connection){
 die("Connection failed: " . mysqli_connect_error());
 }
-$getAll = "select * from QuizQuestions;";
+$getAll = "select * from Questions;";
 $questions = mysqli_query($connection, $getAll);
 $arr = array();
 while($quest = mysqli_fetch_object($questions))

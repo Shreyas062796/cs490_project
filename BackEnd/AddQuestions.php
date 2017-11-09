@@ -1,21 +1,15 @@
 <?php
 $Question = $_POST['Question'];
 $Func = $_POST['FunctionName'];
-$tc1 = $_POST['Testcase1'];
-$type1 = $_POST['Type1'];
-$tca1 = $_POST['Answer1'];
-$tc2 = $_POST['Testcase2'];
-$type2 = $_POST['Type2'];
-$tca2 = $_POST['Answer2'];
-$tc3 = $_POST['Testcase3'];
-$type3 = $_POST['Type3'];
-$tca3 = $_POST['Answer3'];
+$Difficulty = $_POST['Difficulty'];
+$Type = $_POST['QuestionType'];
+$Testcases = $_POST['Testcases'];
 
 $connection = mysqli_connect("sql2.njit.edu", "sr594", "Baseball123", "sr594");
 if (!$connection){
 die("Connection failed: " . mysqli_connect_error());
 }
-$InsertQuestion = "INSERT INTO QuizQuestions (Question,FuncName,tc1,type1,tca1,tc2,type2,tca2,tc3,type3,tca3) VALUES ('$Question','$Func','$tc1','$type1','$tca1','$tc2','$type2','$tca2','$tc3','$type3','$tca3');";
+$InsertQuestion = "INSERT INTO Questions (Question,FuncName,Difficulty,QuestionType,Testcases) VALUES ('$Question','$Func',$Difficulty,'$Type','$Testcases');";
 mysqli_query($connection,$InsertQuestion);
 mysqli_close($connection);
 ?>
