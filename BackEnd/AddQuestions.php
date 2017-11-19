@@ -5,6 +5,7 @@ $Difficulty = $_POST['Difficulty'];
 $Type = $_POST['QuestionType'];
 $Testcases = $_POST['Testcases'];
 
+
 $connection = mysqli_connect("sql2.njit.edu", "sr594", "Baseball123", "sr594");
 if (!$connection){
 die("Connection failed: " . mysqli_connect_error());

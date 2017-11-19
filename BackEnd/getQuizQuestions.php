@@ -5,7 +5,7 @@ $connection = mysqli_connect("sql2.njit.edu", "sr594", "Baseball123", "sr594");
 if (!$connection){
 die("Connection failed: " . mysqli_connect_error());
 }
-$getAll = "select * from Questions;";
+$getAll = "select * from QuizQuestions;";
 $questions = mysqli_query($connection, $getAll);
 $arr = array();
 while($quest = mysqli_fetch_object($questions))
