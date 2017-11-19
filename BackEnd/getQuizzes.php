@@ -19,7 +19,7 @@ array_push($arr,$ob);
 
 for( $i = 0; $i < count($v); $i++)
 {
-$getQuestions = "Select * from QuizQuestions where QuestionId = '$v[$i]';";
+$getQuestions = "Select * from Questions where QuestionId = '$v[$i]';";
 $q = mysqli_query($connection,$getQuestions);
 while($x = mysqli_fetch_object($q))
 {

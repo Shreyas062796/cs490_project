@@ -7,7 +7,7 @@ if (!$connection){
 die("Connection failed: " . mysqli_connect_error());
 }
 
-$query = "Select * from Questions where Difficulty = $Difficult and QuestionType = '$Type';";
+$query = "Select * from Questions where Difficulty = '$Difficult' and QuestionType = '$Type';";
 $filterQuestions = mysqli_query($connection,$query);
 $arr = array();
 
