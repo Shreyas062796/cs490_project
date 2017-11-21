@@ -17,7 +17,7 @@ $createQuestion = "CREATE TABLE QuizQuestions (QuestionId INTEGER primary key au
 $NewCreateQuestions = "CREATE TABLE Questions (QuestionId INTEGER primary key auto_increment, Question TEXT,FuncName VARCHAR(100), Difficulty INTEGER,QuestionType VARCHAR(200),Testcases TEXT)";
 $Grades = "CREATE TABLE StudentGrades (StudentUsername VARCHAR(200), Quiz INTEGER, Grade INTEGER, QuestionGrades TEXT, Comment TEXT)";
 $Quizzes = "CREATE TABLE Quizzes (quiz_id INTEGER,questions VARCHAR(200), quiz_name VARCHAR(200))";
-$TakenQuizzes = "CREATE TABLE TakenQuizzes (username VARCHAR(100),quiz_id INTEGER,question_id INTEGER,StudentAnswer TEXT,StudentFunc VARCHAR(200),Graded INTEGER)";
+$TakenQuizzes = "CREATE TABLE TakenQuizzes (username VARCHAR(100),quiz_id INTEGER,question_id INTEGER,StudentAnswer TEXT,StudentFunc VARCHAR(200),StudentOutput VARCHAR(200),Graded INTEGER)";
 mysqli_query($connection,$Login);
 mysqli_query($connection,$createQuestion);
 mysqli_query($connection,$NewCreateQuestions);
