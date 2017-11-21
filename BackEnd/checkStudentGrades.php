@@ -35,7 +35,7 @@ while($x = mysqli_fetch_object($q))
 array_push($inner,$x);
 }
 }
-$cool = "Select * from TakenQuizzes where username = '$StudentName' and quiz_id = '$QuizId';";
+$cool = "Select * from TakenQuizzes where username = '$StudentName' and quiz_id = '$QuizId' order by question_id;";
 $j = mysqli_query($connection,$cool);
 while($v = mysqli_fetch_object($j))
 {
