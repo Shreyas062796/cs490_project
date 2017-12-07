@@ -20,16 +20,7 @@
 	<!-- <h3> grade - quiz <br></h3> -->
 
 	<div id="gotText" style="float: center; margin: 18px;">
-		<div class="table-title"><h3>My Grades</h3></div>
-		<table border="1" id="gradeTable" class="table-fill">
-			<thead>
-				<tr>
-				<th>Grade</th>
-				<th>Quiz ID</th>
-				</tr>
-			</thead>
-			<tbody></tbody>
-		</table>
+		
 	</div>
 	</body>
 </html>

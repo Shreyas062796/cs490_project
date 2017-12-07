@@ -1,11 +1,12 @@
 // Steven Dias for the generate quiz page
 // GLOBALS
-questionNum=1;
+questionNum=1; // for the index of grabbing questions and putting them in quiz
 
 //=============================================================
 //	GLOBALS
 var midController = "https://web.njit.edu/~aa944/download/490/TESTS/controller.php";
 var backController = "https://web.njit.edu/~sr594/cs490Project/Backend/BackEnd/AddQuestions.php"; //REMOVE THIS WORK WITH MIDDLE CONTROLLER WHEN GIVEN THE CHANCE
+var filterQ = "https://web.njit.edu/~sr594/cs490Project/Backend/BackEnd/filterQuestions.php"; //REMOVE THIS WORK WITH MIDDLE CONTROLLER WHEN GIVEN THE CHANCE
 var questHtml = "templates/createQ.html";
 var wordbank = [];
 var examField =[];
@@ -16,8 +17,202 @@ for(var a=0;a<wordbank.length;a++){
 }
 
 
+//====TABLE CONTROLS=====
+var tableStart=0; //index of where to start readding questions
+var incAmount = 5; // amount to increment
+
+function emptyTable(){
+
+	// console.log("tableStart:"+tableStart+"  incAmount:"+incAmount);
+
+	var dtable = document.getElementById("qTable");
+	var tableBody = dtable.getElementsByTagName("tbody")[0];
+	tableBody.innerHTML = inputinto();
+	// console.log("got here");
+	// tableBody = inputinto();
+}
+
+function inputinto(atable){
+	var out = "";
+
+	console.log(wordbank);
+	for(var i=tableStart;i<tableStart+incAmount;i++){
+		// generates an entry for every item in the table
+		try{
+			var addition = `
+			<tr>
+			<td>`+wordbank[i].QuestionId+`</td>
+    		<td>`+wordbank[i].Question+`</td>
+    		<td>`+difficulty(wordbank[i].Difficulty)+`</td>
+    		<td>`+wordbank[i].QuestionType+`
+  			</tr>
+  			`;
+			out+=addition;
+		}
+		catch(e){
+			continue;
+		}
+	}
+	return out
+}
+
+
+function moveLeft(){
+	var banksize = wordbank.length;
+	// console.log(banksize);
+	// catch if you cant go any more to the left
+	if(tableStart==0){
+		return;
+	}
+
+	tableStart-=5
+	emptyTable();
+}
+
+function moveRight(){
+	var banksize = wordbank.length;
+	// console.log(banksize);
+	if(tableStart+5 > banksize){
+		return;
+	}
+
+
+	tableStart+=5;
+	emptyTable();
+}
+
+
+
+//=============================
+//		SORTING
+
+var numdiff = "all";
+var atype = "all";
+
+
+function sortAll(){
+	var call = "call=loadAllQuestions";
+	ajax(midController, "POST", function() {
+		if (this.readyState == 4 && this.status == 200) {
+			wordbank = JSON.parse(this.responseText);		
+			emptyTable();
+		}
+	}, call);
+}
+
+
+function sortDiff(diffy){
+	console.log(diffy);
+	// emptyTable();
+	// var dtable = document.getElementById("qTable");
+	// var tableBody = dtable.getElementsByTagName("tbody")[0];
+	// tableBody.innerHTML = "";
+
+	numdiff = diffy.toLowerCase();
+
+	if(numdiff=="all"&&atype=="all"){
+		sortAll();
+		return;
+	}
+
+	var pdata;
+	if(numdiff=="all"){
+		pdata = "QuestionType="+atype;
+	}else{
+		numdiff = reverseDiff(diffy);
+
+		pdata = "Difficulty="+numdiff;
+
+		if(atype!="all"){
+			pdata += "&QuestionType="+atype;
+		}
+	}
+
+	
+
+	ajax(filterQ, "POST", function(){
+		if(this.readyState == 4 && this.status == 200){
+			console.log(pdata);
+			console.log(this.responseText);
+
+			wordbank = JSON.parse(this.responseText)
+			emptyTable();
+		}
+	},pdata);
+}
+
+function sortType(intype){
+	console.log(intype);
+
+	atype = intype;
+
+	if(numdiff=="all"&&atype=="all"){
+		sortAll();
+		return;
+	}
+
+	var pdata;
+	if(intype=="all"){
+		pdata="Difficulty="+numdiff;
+
+	}else{
+		pdata = "QuestionType="+atype;
+
+		if(numdiff!="all"){
+			pdata += "&Difficulty="+numdiff;
+		}
+	}
+
+	ajax(filterQ, "POST", function(){
+		if(this.readyState == 4 && this.status == 200){
+			console.log(pdata);
+			console.log(this.responseText);
+
+			wordbank = JSON.parse(this.responseText)
+			emptyTable();
+		}
+	},pdata);
+
+}
+
+
+
+
+
+// ============================
+
+
+
+//=======================
+
+
+// difficulty checker
+function difficulty(anum){
+	var difficulty = ["Easy", "Medium", "Hard"];
+	return difficulty[anum-1];
+}
+
+function reverseDiff(adiff){
+	var val = 0;
+	var difficulty = ["Easy", "Medium", "Hard"];
+	for(var i=0;i<difficulty.length;i++){
+		if (adiff==difficulty[i]){
+			return (i+1);
+		}
+	}
+}
+
+
+
+
+
+
+//=========================
+
+// loads initial table into an empty table
 function loadQuestions(){
 	// table header for the tables being loaded from the db	
+	// i really need to fix this
 	var table = `
 		<div class="table-title"><h3>Question Bank</hr></div>
 		<table border="1" id="qTable" class="table-fill">
@@ -25,22 +220,26 @@ function loadQuestions(){
 		<tr>
 		<th>id</th>
 		<th>Question</th>
+		<th>Difficulty</th>
+		<th>Type</th>
 		</tr>
 		</thead>
 		<tbody>
 	`;
-	
-	for(var i=0;i<wordbank.length;i++){
-		// generates an entry for every item in the table
-		var addition = `
-			<tr>
-			<td>`+wordbank[i].QuestionId+`</td>
-    		<td>`+wordbank[i].Question+`</td>
-  			</tr>
-  			`;
-		table+=addition;
-	}
+	var all = wordbank.lenth;
+	var mount = 5;
+
+	table += inputinto();
 	table+= "</tbody></table>";
+
+	// the the buttons that allow you to move
+	table+=`
+	<div id="change-button" style="float: right;">
+		<button onclick="moveLeft();" type="button" class="moveleft" id="moveleft"> \<\< </button>
+		<button onclick="moveRight();" type="button" class="moveright" id="moveright"> \>\> </button>
+	</div>
+	<br>
+	`;
 
 	return table;
 }
@@ -81,10 +280,12 @@ function tableAdd(table, id){
 	var q_num = row.insertCell(0);
 	var q_id = row.insertCell(1);
 	var q_str = row.insertCell(2);
+	var q_points = row.insertCell(3);
 	
 	q_num.innerHTML = questionNum;
 	q_id.innerHTML = item.QuestionId;
 	q_str.innerHTML = item.Question;
+	q_points.innerHTML = '<input type="text" id="' + item.QuestionId+'points" style="width:30px;">';
 
 	// console.log(item.QuestionId);
 	// console.log(item.Question);
@@ -160,6 +361,9 @@ function addAQuestion(){
 	getHTML(questHtml, area);
 }
 
+
+
+
 //===========END JOINT =====================================
 
 
@@ -171,9 +375,10 @@ function createQuiz(){
 	// send it to back to be stored as a exam everyone can take
 
 	var qids = [];
-
+	var qpoints = [];
 
 	var quiztable = document.getElementById("theExam");
+	console.log(quiztable)
 	var rowLength = quiztable.rows.length;
 
 	for(var i=1;i<rowLength; i++) {
@@ -181,20 +386,28 @@ function createQuiz(){
 		var tCells = quiztable.rows.item(i).cells;
 		var cellLength = tCells.length-1;
 		for (var j = 1; j<cellLength; j++) {
+			// console.log(tCells.item(j).innerHTML);
 			qids.push(tCells.item(j).innerHTML);
 			document.getElementById(tCells.item(j).innerHTML);
 			tCells.item(j).innerHTML
 		}  
 	}
+	console.log(qids);
 
 	var qzname= document.getElementById("quizname").value;
 	var strar = "";
-	for(var k=0; k<qids.length; k++){
+	var pointStr = ""
+	for(var k=0; k<qids.length; k+=2){
 		strar+= qids[k] + " ";
+		
+		pointStr+= document.getElementById(qids[k]+"points").value + " "; 
 	}
-	
-	var newquiz = "call=createQuizzes&quizname="+qzname+"&Questions="+strar;
+	strar = strar.slice(0, -1);
+	pointStr = pointStr.slice(0, -1);
 
+	
+	var newquiz = "call=createQuizzes&quizname="+qzname+"&Questions="+strar+"&QuestionPts="+pointStr;
+	console.log(newquiz);
 	// AJAX 
 	ajax(midController, "POST", function() {
 		if (this.readyState == 4 && this.status == 200) {
@@ -279,6 +492,22 @@ function submitQuestion(){
 	}, quizpost);
 }
 
+function done(){
+	var area = document.getElementById("workArea");
+	area.innerHTML= "";	
+}
+
+function createQuestion(){
+
+	ajax("templates/createQ.html", "GET", function(){
+		if (this.readyState == 4 && this.status == 200) {
+
+			var area = document.getElementById("workArea");
+			area.innerHTML= this.responseText;	
+		}
+	});
+}
+
 // on page load it gets the questions from the question bank in the db
 window.onload = function loadData(){
 	// call requestion to get questions for the teacher
@@ -287,6 +516,7 @@ window.onload = function loadData(){
 	ajax(midController, "POST", function() {
 		var wordbankhtml = document.getElementById("qBank")
 		if (this.readyState == 4 && this.status == 200) {
+			// console.log(this.responseText);
 			var file = JSON.parse(this.responseText);
 			wordbank = file; // set the global
 			wordbankhtml.innerHTML=loadQuestions();

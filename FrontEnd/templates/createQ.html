@@ -1,4 +1,27 @@
-<fieldset class="makeQ">
+<link rel=stylesheet href="css/questions.css">
+<link rel=stylesheet href="css/tables.css">
+<script src="js/createQ.js"></script>
+
+<div class="container">
+<fieldset class="typeQ">
+	<legend><h3>Set question parameters.</h3></legend>
+	<label>Question Dificulty 
+		<select name="question-dif" class="question-sel" id="question-dif">
+		<option value="" disabled selected>----</option>
+		<option value="easy">Easy</option>
+		<option value="medium">Medium</option>
+		<option value="hard">Hard</option>
+	</select></label><br>
+	<label>Question Type
+		<select name="question-type" class="question-sel" id="question-type">
+		<option value="" disabled selected>----</option>
+		<option value="for loop">For loop</option>
+		<option value="while loop">While loop</option>
+		<option value="if/else statement">If/else/elif</option>
+	</select></label>
+
+</fieldset>
+<fieldset class="makeQ" >
 	<p> Write a function named <input type="text" name="newQues" id="newQues" size="30" placeholder="functionName">	
 	that takes 
 	<select name="argsAmount" id="argsAmount">
@@ -13,79 +36,19 @@
 	<b> Testcases</b>
 	<br>
 	<p>Seperate by spaces (Use quotes if strings, leave empty if takes no arguments)</p>
-	<label>
+	<!-- <label> -->
+	<div class="testcases" id="testcases">
 
-	<input type="text" name="testcase1" id="testcase1" size="10" 	placeholder="ie. 2 2">
-	of type
-	<select name="testcase1-inType" id="testcase1-inType">
-		<option value="int">int</option>
-		<option value="float">float</option>
-		<option value="string">string</option>
-		<option value="bool">bool</option>
-	</select>
-	and expect
-	<input type="text" name="answer1" id="answer1" size="10" 	placeholder="ie. 0">
-	of the same type.
-<!-- 	<select name="testcase1-outType" id="testcase1-outType">
-		<option value="int">int</option>
-		<option value="float">float</option>
-		<option value="string">string</option>
-		<option value="bool">bool</option>
-	</select> -->
-	<br>
-
-	<input type="text" name="testcase2" id="testcase2" size="10" 	placeholder="ie. 1 2">
-	of type
-	<select name="testcase2-inType" id="testcase2-inType">
-		<option value="int">int</option>
-		<option value="float">float</option>
-		<option value="string">string</option>
-		<option value="bool">bool</option>
-	</select>
-	and expect
-	<input type="text" name="answer2" id="answer2" size="10" 	placeholder="ie. 3">
-	of the same type.
-<!-- 	<select name="testcase2-outType" id="testcase2-outType">
-		<option value="int">int</option>
-		<option value="float">float</option>
-		<option value="string">string</option>
-		<option value="bool">bool</option>
-	</select> -->
-	<br>
-
-
-	<input type="text" name="testcase3" id="testcase3" size="10" 	placeholder="ie. 3 4 5">
-	of type
-	<select name="testcase3-inType" id="testcase3-inType">
-		<option value="int">int</option>
-		<option value="float">float</option>
-		<option value="string">string</option>
-		<option value="bool">bool</option>
-	</select>
-	and expect
-	<input type="text" name="answer3" id="answer3" size="10" 	placeholder="ie. 3 4">
-	of the same type.
-	<!-- <select name="testcase3-outType" id="testcase3-outType">
-		<option value="int">int</option>
-		<option value="float">float</option>
-		<option value="string">string</option>
-		<option value="bool">bool</option>
-	</select> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
+	</div>
 	</p>
-
-<button type="button" onclick="submitQuestion();" id="button-newQuest" style="margin-top: 10px">Add Question</button>
+<div id="submit-notice" style="color:red; font-weight: bold;"></div>
+<button type="button" onclick="addTestCase();" id="button-newCase" style="margin-top: 10px">Add TestCase</button>
+<button type="button" onclick="submitQuestion();" id="button-newQuest" style="margin-top: 10px">Submit Question</button>
+<button type="button" onclick="done();" id="button-done" style="margin-top: 10px">Leave</button>
 </fieldset>
-	
+
+
+
+
+
+</div>	

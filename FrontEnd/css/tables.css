@@ -3,7 +3,7 @@
 body {
 /*   background-color: #3e94ec; */
   font-family: "Roboto", helvetica, arial, sans-serif;
-  font-size: 14px;
+  /*font-size: 14px;*/
   font-weight: 400;
   text-rendering: optimizeLegibility;
 }
@@ -107,7 +107,7 @@ tr:last-child td:last-child {
  
 td {
   background:#FFFFFF;
-  padding:20px;
+  padding:10px;
   text-align:left;
   vertical-align:middle;
   font-weight:300;

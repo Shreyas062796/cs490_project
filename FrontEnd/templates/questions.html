@@ -4,8 +4,10 @@
 <link rel=stylesheet href="css/questions.css">
 <link rel=stylesheet href="css/tables.css">
 <script src="js/questions.js"></script>
+<script src="js/createQ.js"></script>
 
 <body class="quizCreator">
+	<div class="container">
 	<div class="quizgen-title" id="quizgen-title">
 	<h2>Create your quiz</h2>
 	<p class="title"><b>
@@ -27,6 +29,7 @@
 					<th>Q#</th>
 					<th>id</th>
 					<th>Question</th>
+					<th>Points</th>
 				</tr>
 				</thead>
 				<tbody>
@@ -36,21 +39,43 @@
 			<br>
 			<div id="buttons">
 			<button onclick="addQuestionId();" type="button" class="addQuestionId" id="addQuestionId">Add Question by Id</button>
-
-			<button onclick="addAQuestion();" type="button" class="addQuestion" id="addQuestion">Add New Question</button>
+			<button onclick="createQuestion();" type="button" class="create-question" id='create-question'>Create Question</button>
+			<!-- <button onclick="addAQuestion();" type="button" class="addQuestion" id="addQuestion">Add New Question</button> -->
 			<button onclick="createQuiz();" type="button" class="create-quiz" id='create-quiz'>Submit&amp;Create Quiz</button>
 			</div>
 			<div id="submit-notice"></div>
 		</div>
 
+		<fieldset class="typeQ">
+			<legend><h3>Sort table by:</h3></legend>
+			<label>Question Dificulty 
+				<select name="sort-dif" class="sort-sel" id="sort-dif" onchange="sortDiff(this.value)">
+				<option value="All">All</option>
+				<option value="Easy">Easy</option>
+				<option value="Medium">Medium</option>
+				<option value="Hard">Hard</option>
+				</select>
+			</label><br>
+			<label>Question Type
+				<select name="sort-type" class="sort-type" id="sort-type" onchange="sortType(this.value)">
+				<option value="all">All</option>
+				<option value="for loop">For loop</option>
+				<option value="while loop">While loop</option>
+				<option value="if/else statement">If/else/elif</option>
+			</select></label>
+
+		</fieldset>
 		<div style="float: left; clear: both; margin-top: 10px; padding-top: 10px" id="workArea"><br>
 		</div>
+
+
  		<div style="margin-left:70%;" class="qBank" id="qBank">
 		<!-- <div style="width:100%; align:right;" class="qBank" id="qBank"> -->
 
 		</div>
 
 
+	</div>
 	</div>
 
 

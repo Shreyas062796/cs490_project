@@ -9,6 +9,8 @@ toDoFunc -> will be the code to be executed once a reply is received
 postData -> the post array as a string to be send, also with the call for the controller
 */
 
+var user = "";
+
 
 // Function just outputs a message if in DEBUG mode
 DEBUG = true;
@@ -23,7 +25,7 @@ function ajax(location, sendType, toDoFunc, postData=null){
 	// initialization
 	xhttp = new XMLHttpRequest();
 	xhttp.open(sendType, location, true);
-	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded", "charset=UTF-8");
 	xhttp.onreadystatechange = toDoFunc; // the function to execute on getting a reply
 
 	if(postData!=null){
@@ -79,6 +81,18 @@ function getHTML(loc, insertArea){
 		}
 	});
 }
+
+// gets the current user #CAREFUL this will only work if there is a wait
+function getUser(changeVal){
+	var username;
+	ajax(userLoc, "POST", function(){
+		if(this.readyState == 4 && this.status == 200){
+			user =  this.responseText;
+		}
+	});
+}
+
+
 
 
 // Need a function that will update tables work on that later

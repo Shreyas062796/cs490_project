@@ -21,26 +21,25 @@ if (!isset($_SESSION["TYPE"]))
     if($_SESSION['TYPE']=="teacher"){
       echo '<li> <a href="questions.php"><span>Quiz</span></a>
             <ul>
-          <li><a href="">Create Quiz</a></li>
-          <li><a href="">Lookup Questions</a></li>
-          <li><a href="">Create Questions</a></li>
+          <li><a href="questions.php">Create Quiz</a></li>
+          <li><a href="createQ.php">Create Questions</a></li>
         </ul>
           </li>
       <li> <a href="grades.php"><span>Grades</span></a>
             <ul>
-          <li><a href="">Lookup Grades</a></li>
-          <li><a href="">Grade Exams</a></li>
+          <li><a href="grades.php">Lookup Grades</a></li>
+          <li><a href="gradesCorrect.php">Grade Exams</a></li>
         </ul>
           </li>';
     }elseif($_SESSION['TYPE']=="student"){
       echo '<li> <a href="takeQuiz.php"><span>Quiz</span></a>
             <ul>
-          <li><a href="">Take a Quiz</a></li>
+          <li><a href="takeQuiz.php">Take a Quiz</a></li>
         </ul>
           </li>
       <li> <a href="mygrades.php"><span>Grades</span></a>
             <ul>
-          <li><a href="">Lookup Grades</a></li>
+          <li><a href="mygrades.php">Lookup Grades</a></li>
         </ul>
           </li>';
     }

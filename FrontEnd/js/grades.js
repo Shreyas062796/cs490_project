@@ -81,7 +81,7 @@ function getPending(loc, insertArea){
 			// begining of table loading
 			var table = document.getElementById("releaseGrades");
 
-			var tableBody = table.getElementsByTagName("tbody")[0];
+			// var tableBody = table.getElementsByTagName("tbody")[0];
 			var amount = file.length;
 
 			// insertArea.innerHTML = '<button onclick="correctPending();" type="button" class="correct-quiz" id="correct-quiz">Correct Pending</button><br>';
@@ -119,6 +119,7 @@ function getHTML(loc, insertArea){
 	xhttp.onreadystatechange = function(){
 		if(this.readyState == 4 && this.status == 200){
 			file = JSON.parse(this.responseText);
+			console.log(this.responseText);
 			// file.pop(file.length-1); // remove the null from the end
 			// wordbank = file;
 			console.log(file);
@@ -137,10 +138,12 @@ function getHTML(loc, insertArea){
 				//get the cells you want to insert into the row
 				var student = row.insertCell(0);
 				var qzid = row.insertCell(1);
-				var agrade = row.insertCell(2)
+				var comment = row.insertCell(2);
+				var agrade = row.insertCell(3)
 
 				student.innerHTML = file[i].StudentUsername;
 				qzid.innerHTML = file[i].Quiz;
+				comment.innerHTML = file[i].Comment;
 				agrade.innerHTML = file[i].Grade;
 
 
@@ -154,11 +157,38 @@ function getHTML(loc, insertArea){
 	xhttp.send(call);
 }
 
+
+var sloc  = "https://web.njit.edu/~sr594/cs490Project/Backend/BackEnd/checkStudentGrades.php";
+var params = "QuizId=1234&StudentUsername=sr594";
+
+function insertInitial(){
+	var dtable = `
+	<div class="table-title"><h3>My Grades</h3></div>
+		<table border="1" id="gradeTable" class="table-fill">
+			<thead>
+				<tr>
+				<th>Grade</th>
+				<th>Quiz ID</th>
+				<th></th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+	`
+	document.getElementById('getText').innerHTML = dtable;
+}
+
+
+
+
+
 window.onload = function getGrades(){
 	var locationForAll =  "https://web.njit.edu/~sr594/cs490Project/Backend/BackEnd/getAllGrades.php";
 	var locationForPending = "https://web.njit.edu/~sr594/cs490Project/Backend/BackEnd/getTakenQuizzes.php";
 
 	var mid_controller = "https://web.njit.edu/~aa944/download/490/TESTS/controller.php"; 
+	console.log(getQueryStrings());
+	// insertInitial();
 
 	var adiv = document.getElementById("gotText");
 	getHTML(mid_controller, adiv);
@@ -166,4 +196,15 @@ window.onload = function getGrades(){
 	var bdiv = document.getElementById("releaseGrades");
 	getPending(mid_controller, bdiv);
 
-}
+
+
+	ajax(sloc, 'POST' , function(){
+		if(this.readyState==4 && this.status==200){
+			// var tester = document.getElementById("tester");
+			// tester.innerHTML = this.responseText;
+	
+			console.log(this.responseText);
+		}
+	}, params);
+
+}	

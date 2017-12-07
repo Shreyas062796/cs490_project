@@ -1,3 +1,43 @@
 #quizGenerator{
   padding: 12px;
 }
+
+#quizLinks{
+	font-size: 40px;
+}
+
+#everything{
+	text-align:center;
+	border: black solid 2px
+}
+
+textarea{
+	color:#666666;
+	font-size: 20px
+}
+
+.container{
+	padding: 20px;
+	text-align: left;
+}
+
+#quiztitle{
+	font-family: palatino;
+	color: #4c5b75;
+}
+
+#quizlinks{
+	color:black;
+	font-size: 18px;
+	font-family: roboto;
+	padding-left: 12px;
+	/*padding-top: 40px;*/
+}
+
+#quizlinks:hover{
+	color: #4c5b75;
+}
+#everything{
+	padding-left: 20px;
+	padding-right: 20px
+}

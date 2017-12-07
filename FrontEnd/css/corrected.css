@@ -1,0 +1,88 @@
+.corrected-ex span{
+  color: brown
+}
+
+.container{
+	margin-left: 120px;
+	margin-right: 120px;
+	padding-top: 20px;
+  font-size: 22px;
+}
+
+fieldset{
+	background-color: transparent;
+    border: 0px solid;
+}
+
+.qpoints{
+  background-color: transparent;
+    border: 0px solid;
+    height: 20px;
+    width: 35px;
+    padding-left: 0px;
+    font-weight: bold;
+    font-size: 20px;
+    color: brown;
+    /*color: #CCC;*/
+}
+
+#grade-overall{
+	background-color: transparent;
+    border: 0px solid;
+    height: 20px;
+    width: 60px;
+    padding-left: 10px;
+    /*font-weight: bold;*/
+    font-size: 20px;
+    /*color: #CCC;*/
+}
+
+label {display:block;}
+textarea { display:block;}
+
+
+input, textarea, select, button, meter, progress {
+    -webkit-writing-mode: horizontal-tb;
+}
+
+input, textarea, select, button {
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    margin: 2px;
+    font: 13.3333px Arial;
+}
+
+button{
+  font-family: roboto;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #ceeefb;
+  background:#1b1e24;
+/*   background: #2890bc; */
+/*   text-align:left; */
+  width:fit-content;
+  outline:0;
+  border:0;
+  padding:15px;
+/*   text-transform: uppercase; */
+  border-radius: .15rem;
+
+}
+
+button:hover, form button:active, form button:focus{
+  background: #055E85; 
+}
+
+button{
+-webkit-border-radius: 50px;
+-moz-border-radius: 50px;
+border-radius: 50px;
+}
+

@@ -42,7 +42,7 @@ function getHTML(loc){
 			file = JSON.parse(this.responseText);
 			for(var i=0;i<file.length;i++){
 				// generate a page that will redirect to the respective quiz you click on
-				qList.innerHTML+= '<a href="https://web.njit.edu/~ssd42/takeQuiz.php?exam_id=' + file[i].quiz_id + '">' + file[i].quiz_name + '</a><br>'; 				
+				qList.innerHTML+= '<br>&#9737;<a id="quizlinks" href="https://web.njit.edu/~ssd42/takeQuiz.php?exam_id=' + file[i].quiz_id + '">' + file[i].quiz_name + '</a><br>'; 				
 			}
 		}
 	})

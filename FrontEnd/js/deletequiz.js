@@ -29,18 +29,18 @@ function getUser(changeVal){
 
 
 // creates a table and then adds it to a div
-function createQHtml(contents, quizname){
+function createQHtml(contents, quizname, point_arr){
 	var div = document.createElement("div");
 	div.innerHTML = ""; // initialize the html portion
 
 	// var quizname = contents[0].quiz_name;
-	div.innerHTML += "<h2>" +  quizname + "</h3><br><br>"; // header in a sense
+	div.innerHTML += "<h1>" +  quizname + "</h1><br><br>"; // header in a sense
 
 	for(var i=0; i<contents.length; i++){
 				// generate the question
-		div.innerHTML +=  "<br>" + "Q" + (i+1)+ "    " + contents[i].Question + "<br>";
+		div.innerHTML +=  "<br>" + "<h3>Q" + (i+1)+  "\t("+ point_arr[i] +" Points)" + "</h3> " + ' <p style="display:inline" class="theQues">' + contents[i].Question + "</p><br><br>";
 		// auto generate ids for the textfields
-		div.innerHTML += "<textarea autocomplete='off' placeholder='answer' rows='7' cols='40'" + "id='answer"+ (i+1)  + "'" + "></textarea>" + "<br>";
+		div.innerHTML += "<textarea autocomplete='off' placeholder='answer' rows='10' cols='80'" + "id='answer"+ (i+1)  + "'" + "></textarea>" + "<br>";
 	}
 	return div;
 }
@@ -51,8 +51,9 @@ function getQuestions(quizId){
 
 	ajax(midController, "POST", function(){
 		if(this.readyState == 4 && this.status == 200){
+			console.log(this.responseText);
 			file = JSON.parse(this.responseText);
-			document.getElementById("something").appendChild(createQHtml(file[1], file[0].quiz_name));
+			document.getElementById("something").appendChild(createQHtml(file[1], file[0].quiz_name, file[0].question_pts.split(" ")));
 			questions = file; // set the global to the reply
 		}
 	}, postdata);
@@ -62,20 +63,32 @@ function getQuestions(quizId){
 function postQuiz(postdata){
 
 	postdata+="&call=enterTakenQuizzes"
-	console.log(postdata);
-	var corrected = postdata.replace('+', '%2B');
+	// var corrected = postdata.replace('+', '%2B');
+	var corrected = postdata;
+	// corrected = encodeURIComponent(corrected);
 
-	ajax(midController, "POST", function(){
+	var backController = "https://web.njit.edu/~sr594/cs490Project/Backend/BackEnd/enterTakenQuizzes.php"
+
+	console.log(corrected);
+	ajax(backController, "POST", function(){
 		if(this.readyState == 4 && this.status == 200){
 			console.log(this.responseText);
 		}
 	},corrected);
+	var text = "<br><br><h3>Exam has been submitted</h3>";
+	document.getElementById("submitted").innerHTML = text;
+}
+
+
+function rfc3986EncodeURIComponent (str) {  
+	console.log(str);
+    return encodeURIComponent(str).replace(/[!'()*+-/]/g, escape);  
 }
 
 // this is the generate action
 // function that creates the form for when the user is done with his/her exam they can send the grades to be retrieved
 function submitQuiz(){
-	console.log("Something something ==> "+user);
+	// console.log("User is ==> "+user);
 	var exam_id = questions[0].quiz_id;
 	the_answers = []
 
@@ -85,7 +98,7 @@ function submitQuiz(){
 		var ans_id = "answer"+(i+1);
 		//get the answer reply
 		var an_answer = document.getElementById(ans_id).value;
-		console.log(an_answer);
+		// console.log(an_answer);
 		the_answers.push({question_id: parseInt(questions[1][i].QuestionId), answer: an_answer});
 	}
 
@@ -93,11 +106,10 @@ function submitQuiz(){
 		var ans_id = "answer"+(i+1);
 		var an_answer = document.getElementById(ans_id).value.toString();
 	
-
 		// setting up the post string
-		var postReturn =  "StudentUsername="+user+"&QuizId="+exam_id+"&QuestionId="+questions[1][i].QuestionId+"&Answer="+an_answer;
+		var postReturn =  "StudentUsername="+user+"&QuizId="+exam_id+"&QuestionId="+questions[1][i].QuestionId+"&Answer="+rfc3986EncodeURIComponent(an_answer);
 
-		console.log(postReturn);
+		// console.log(postReturn);
 		//NOTE WHY AM I DOING THIS IN A FOR LOOP?
 		postQuiz(postReturn); // sends to the next function that will send it 
 	}
