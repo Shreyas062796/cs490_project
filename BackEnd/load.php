@@ -77,6 +77,7 @@ $Quest21 = "INSERT INTO Questions (Question,FuncName,Difficulty,QuestionType,Tes
 $Quest22 = "INSERT INTO Questions (Question,FuncName,Difficulty,QuestionType,Testcases) VALUES ('Write a function good that takes 1 parameter and iterates through it 4 times and adds 1 every time.','good',2,'for loop','1-2345;;4-5678;;3-4567;;6-78910');";
 $Quest23 = "INSERT INTO Questions (Question,FuncName,Difficulty,QuestionType,Testcases) VALUES ('Write a function jump that takes two parameters and increments the first one by the second one 3 times.','jump',1,'for loop','10 2-121416;;9 1-101112;;8 3-111417');";
 $Quest24 = "INSERT INTO Questions (Question,FuncName,Difficulty,QuestionType,Testcases) VALUES ('Write a function facts that takes 1 parameter and says facts the number of times that is the parameter','facts',1,'for loop','1-facts;;3-factsfactsfacts;;2-factsfacts;;4-factsfactsfactsfacts');";
+$Quest25 = "INSERT INTO Questions (Question,FuncName,Difficulty,QuestionType,Testcases) VALUES ('Write a function operation that takes 3 parameters that takes a string and 2 integers does the operation to the values','operation',3,'if/else statement','plus 1 2-3;;minus 2 1-1;;times 2 2-4;;divide 2 1-2');";
 $Quiz1 = "INSERT INTO Quizzes (quiz_id,questions,question_pts,quiz_name) VALUES (1234,'1 2 3','10 20 30','Quiz1');";
 $Quiz2 = "INSERT INTO Quizzes (quiz_id,questions,question_pts,quiz_name) VALUES (4351,'2 3 4','20 10 30','Quiz2');";
 $Grade1 = "INSERT INTO StudentGrades (StudentUsername, Quiz, Grade, Comment) VALUES ('obc2',1234,72,'very good job but work on for loops');";
@@ -121,6 +122,7 @@ mysqli_query($connection,$Quest21);
 mysqli_query($connection,$Quest22);
 mysqli_query($connection,$Quest23);
 mysqli_query($connection,$Quest24);
+mysqli_query($connection,$Quest25);
 mysqli_query($connection,$Quiz1);
 mysqli_query($connection,$Quiz2);
 mysqli_query($connection,$Grade1);
