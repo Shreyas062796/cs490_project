@@ -1,7 +1,7 @@
 <?php
 $Student = $_POST['StudentUserName'];
 
-$connection = mysqli_connect("sql2.njit.edu", "sr594","Baseball123", "sr594");
+$connection = mysqli_connect("sql2.njit.edu", "sr594","//password", "sr594");
 if (!$connection){
 die("Connection failed: " . mysqli_connect_error());
 }

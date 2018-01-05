@@ -4,7 +4,7 @@ $StudentArr = array("sr594" => "Poaster", "obc2" => "Coolstuff", "test" => "test
 
 $TeacherArr = array("teacher" => "password", "professor" => "mypass", "theo" => "cs490", "coo" => "elchimang", "cass" => "Jumble");
 
-$connection = mysqli_connect("sql2.njit.edu", "sr594","Baseball123", "sr594");
+$connection = mysqli_connect("sql2.njit.edu", "sr594","//password", "sr594");
 
 if (!$connection){
 die("Connection failed: " . mysqli_connect_error());
